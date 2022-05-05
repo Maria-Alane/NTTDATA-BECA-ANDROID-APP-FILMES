@@ -10,6 +10,7 @@
         android:src="@drawable/ahoradopesadelo"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescripition"/>
