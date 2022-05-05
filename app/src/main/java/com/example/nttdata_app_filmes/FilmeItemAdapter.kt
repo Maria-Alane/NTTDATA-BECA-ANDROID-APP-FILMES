@@ -10,11 +10,12 @@ import com.example.nttdata_app_filmes.model.Filme
 
 class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DIFF_CALLBACK) {
 
+    var onClickListener: ((filmeId: Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmeViewHolder {
         val binding =
             FilmeListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FilmeViewHolder(binding)
+        return FilmeViewHolder(binding, onClickListener)
     }
 
     override fun onBindViewHolder(holder: FilmeViewHolder, position: Int) {
@@ -22,12 +23,18 @@ class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DI
     }
 
     class FilmeViewHolder(
-        private val binding: FilmeListItemBinding
+        private val binding: FilmeListItemBinding,
+        private val onClickListener: ((filmeId: Int) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(filme: Filme) {
             binding.textViewTitulo.text = filme.title
             binding.textViewLancamento.text = filme.release_date
+
+            binding.root.setOnClickListener {
+                onClickListener?.invoke(filme.id)
+            }
+
         }
 
     }

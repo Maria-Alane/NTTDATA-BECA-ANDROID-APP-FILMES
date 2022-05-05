@@ -1,5 +1,6 @@
 package com.example.nttdata_app_filmes
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.nttdata_app_filmes.databinding.ActivityMainBinding
@@ -17,9 +18,18 @@ class MainActivity : AppCompatActivity() {
 
         val filmeListAdapter = FilmeItemAdapter()
 
+        filmeListAdapter.onClickListener = {filmeId ->
+            goToDetails(filmeId)
+        }
+
         binding.filmesListRecyclerview.adapter = filmeListAdapter
 
         filmeListAdapter.submitList(mockFilme())
-
     }
+
+    private fun goToDetails(filmeId: Int) {
+        val intent = Intent(this, FilmeDetailsActivity::class.java)
+        startActivity(intent)
+    }
+
 }
