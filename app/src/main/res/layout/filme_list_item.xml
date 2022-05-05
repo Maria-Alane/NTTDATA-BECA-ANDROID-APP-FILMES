@@ -36,22 +36,22 @@
             tools:text="A Hora do Pesadelo" />
 
         <TextView
-            android:id="@+id/text_view_genero"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/imagem_view_filme"
-            app:layout_constraintTop_toBottomOf="@id/text_view_titulo"
-            tools:text="Terror. Psicologico. Horror" />
-
-        <TextView
             android:id="@+id/text_view_lancamento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@id/imagem_view_filme"
-            app:layout_constraintTop_toBottomOf="@id/text_view_genero"
+            app:layout_constraintTop_toBottomOf="@id/text_view_titulo"
             tools:text="1986-10-27" />
+
+        <TextView
+            android:id="@+id/text_view_vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/imagem_view_filme"
+            app:layout_constraintTop_toBottomOf="@id/text_view_lancamento"
+            tools:text="7.8" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

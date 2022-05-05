@@ -30,6 +30,7 @@ class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DI
         fun bind(filme: Filme) {
             binding.textViewTitulo.text = filme.title
             binding.textViewLancamento.text = filme.release_date
+            binding.textViewVote.text = filme.vote_average.toString()
 
             binding.root.setOnClickListener {
                 onClickListener?.invoke(filme.id)

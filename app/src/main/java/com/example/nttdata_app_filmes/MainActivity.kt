@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goToDetails(filmeId: Int) {
         val intent = Intent(this, FilmeDetailsActivity::class.java)
+        intent.putExtra("filmeId", filmeId)
         startActivity(intent)
     }
 

@@ -63,7 +63,7 @@ fun mockFilme() = listOf(
         tagline = "Mischief. Mayhem. Soap.",
         title = "Fight Club",
         video = false,
-        vote_average = 8.4,
+        vote_average = 7.4,
         vote_count = 23990
 
     ),
@@ -86,7 +86,7 @@ fun mockFilme() = listOf(
         tagline = "Mischief. Mayhem. Soap.",
         title = "Barbie",
         video = false,
-        vote_average = 8.4,
+        vote_average = 4.4,
         vote_count = 23990
 
     ),
