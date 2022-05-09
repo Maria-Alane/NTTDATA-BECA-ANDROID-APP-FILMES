@@ -1,16 +1,16 @@
-package com.example.nttdata_app_filmes
+package com.example.filmes
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nttdata_app_filmes.databinding.FilmeListItemBinding
-import com.example.nttdata_app_filmes.model.Filme
+import com.example.filmes.databinding.FilmeListItemBinding
+import com.example.filmes.model.Filme
 
 class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DIFF_CALLBACK) {
 
-    var onClickListener: ((filmeId: Int) -> Unit)? = null
+    var onClickListener: ((filme: Filme) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmeViewHolder {
         val binding =
@@ -24,20 +24,18 @@ class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DI
 
     class FilmeViewHolder(
         private val binding: FilmeListItemBinding,
-        private val onClickListener: ((filmeId: Int) -> Unit)?
+        private val onClickListener: ((filme: Filme) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(filme: Filme) {
             binding.textViewTitulo.text = filme.title
-            binding.textViewLancamento.text = filme.release_date
-            binding.textViewVote.text = filme.vote_average.toString()
+            binding.textViewLancamento.text = filme.releaseDate
+            binding.textViewVote.text = filme.voteAverage.toString()
 
             binding.root.setOnClickListener {
-                onClickListener?.invoke(filme.id)
+                onClickListener?.invoke(filme)
             }
-
         }
-
     }
 
     companion object {
@@ -49,8 +47,6 @@ class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DI
             override fun areContentsTheSame(oldItem: Filme, newItem: Filme): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
 }
-
