@@ -1,16 +1,12 @@
-package com.example.filmes
+package com.example.filmes.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.filmes.api.FilmeResult
-import com.example.filmes.api.RetrofitFilme
+import com.example.filmes.FilmeItemAdapter
+import com.example.filmes.MainViewModel
 import com.example.filmes.databinding.ActivityMainBinding
 import com.example.filmes.model.Filme
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,27 +14,21 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    private val viewModel: MainViewModel =
+        MainViewModel.ViewModelFactory(this@MainActivity)
+            .create(MainViewModel::class.java)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val apiFilme = RetrofitFilme.API_FILME
-
         val filmeListAdapter = FilmeItemAdapter()
 
-        apiFilme.getData().enqueue(object : Callback<FilmeResult> {
-            override fun onResponse(call: Call<FilmeResult>, response: Response<FilmeResult>) {
-                if (response.isSuccessful) {
-                    val filmeSelected = response.body()!!.results
-                    filmeListAdapter.submitList(filmeSelected)
-                }
-            }
+        viewModel.getFilmes()
 
-            override fun onFailure(call: Call<FilmeResult>, t: Throwable) {
-                Toast.makeText(this@MainActivity, "Erro ao carregar filmes!", Toast.LENGTH_LONG)
-                    .show()
-            }
-        })
+        viewModel.filmesLiveData.observe(this) { filmeResult ->
+            filmeListAdapter.submitList(filmeResult.results)
+        }
 
         filmeListAdapter.onClickListener = { filme ->
             goToDetails(filme)

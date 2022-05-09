@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NTTDATAAPPFILMES">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FilmeDetailsActivity"
+        <activity android:name=".view.FilmeDetailsActivity"
             android:exported="true"/>
     </application>
 
