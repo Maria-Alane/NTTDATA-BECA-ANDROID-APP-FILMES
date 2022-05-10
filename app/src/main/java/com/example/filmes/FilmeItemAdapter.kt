@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.filmes.databinding.FilmeListItemBinding
 import com.example.filmes.model.Filme
 
@@ -31,6 +32,12 @@ class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DI
             binding.textViewTitulo.text = filme.title
             binding.textViewLancamento.text = filme.releaseDate
             binding.textViewVote.text = filme.voteAverage.toString()
+
+            Glide
+                .with(binding.root.context)
+                .load("https://image.tmdb.org/t/p/original" + filme.backdropPath)
+                .centerCrop()
+                .into(binding.imagemViewFilme)
 
             binding.root.setOnClickListener {
                 onClickListener?.invoke(filme)
