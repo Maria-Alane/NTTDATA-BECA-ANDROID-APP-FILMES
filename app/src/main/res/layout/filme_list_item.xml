@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    app:cardCornerRadius="8dp"
-    android:layout_marginTop="8dp">
+    app:cardCornerRadius="8dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,10 +16,11 @@
 
         <ImageView
             android:id="@+id/imagem_view_filme"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="400dp"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ahoradopesadelo"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,29 +29,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:textColor="@color/black"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/imagem_view_filme"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/imagem_view_filme"
+            app:layout_constraintStart_toStartOf="parent"
             tools:text="A Hora do Pesadelo" />
 
-        <TextView
-            android:id="@+id/text_view_lancamento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/image_view_star"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/imagem_view_filme"
-            app:layout_constraintTop_toBottomOf="@id/text_view_titulo"
-            tools:text="1986-10-27" />
+            android:src="@drawable/star_24_yellow"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_titulo"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/text_view_vote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/imagem_view_filme"
-            app:layout_constraintTop_toBottomOf="@id/text_view_lancamento"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_titulo"
+            app:layout_constraintStart_toEndOf="@id/image_view_star"
             tools:text="7.8" />
 
 

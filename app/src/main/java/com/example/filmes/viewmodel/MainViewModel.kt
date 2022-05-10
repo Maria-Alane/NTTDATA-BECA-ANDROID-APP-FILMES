@@ -1,4 +1,4 @@
-package com.example.filmes
+package com.example.filmes.viewmodel
 
 import android.content.Context
 import android.widget.Toast

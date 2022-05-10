@@ -30,7 +30,6 @@ class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DI
 
         fun bind(filme: Filme) {
             binding.textViewTitulo.text = filme.title
-            binding.textViewLancamento.text = filme.releaseDate
             binding.textViewVote.text = filme.voteAverage.toString()
 
             Glide
