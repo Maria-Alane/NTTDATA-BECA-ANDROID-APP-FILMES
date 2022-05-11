@@ -11,3 +11,4 @@ As bibliotecas abaixo podem ajuda-lo a lidar com alguns desafios deste projeto.
 
 Biblioteca para carregamento de imagens https://github.com/square/picasso
 Biblioteca para requisições http https://github.com/square/retrofit
+![filmes_alane (1)](https://user-images.githubusercontent.com/86122295/167842434-4663c020-5c02-4a3e-8237-b52034927132.gif)
