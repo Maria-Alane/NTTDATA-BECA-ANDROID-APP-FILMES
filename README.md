@@ -14,7 +14,7 @@ Biblioteca para requisições http https://github.com/square/retrofit
 
 ![filmes_alane (1)](https://user-images.githubusercontent.com/86122295/167842434-4663c020-5c02-4a3e-8237-b52034927132.gif)
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Comecei criando o layout das telas. Criei a lista de filmes usando RecyclerView.
 Para simular os dados de uma API criei um Mock com a lista de filmes.
@@ -26,3 +26,7 @@ chave da api e o endpoint para os filmes populares. Uma data class para o respon
 o retrofit e onde fica a base URL.
 Usei a biblioteca GLIDE para as imagens dos filmes.
 Implementei o ViewModel para separar a chamada da api.
+
+-----------------------------------------------------------------
+
+[Melhoras para aplicar ao App Filmes usando MVVM.pdf](https://github.com/Maria-Alane/NTTDATA-BECA-ANDROID-APP-FILMES/files/8699530/Melhoras.para.aplicar.ao.App.Filmes.usando.MVVM.pdf)
