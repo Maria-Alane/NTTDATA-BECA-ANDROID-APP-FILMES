@@ -1,13 +1,16 @@
-package com.example.filmes.model
+package com.example.filmes.data.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Filme(
+data class FilmeResponse(
+    @SerializedName("id")
     val id: Int?,
+    @SerializedName("adult")
     val adult: Boolean?,
+    @SerializedName("title")
     val title: String?,
     @SerializedName("original_title")
     val originalTitle: String?,
@@ -17,6 +20,7 @@ data class Filme(
     val voteAverage: Double?,
     @SerializedName("popularity")
     val popularity: Double?,
+    @SerializedName("overview")
     val overview: String?,
     @SerializedName("release_date")
     val releaseDate: String?,
@@ -27,3 +31,5 @@ data class Filme(
     @SerializedName("media_type")
     val mediaType: String?
 ) : Parcelable
+
+

@@ -1,4 +1,4 @@
-package com.example.filmes.api
+package com.example.filmes.data.api
 
 import retrofit2.Call
 import retrofit2.http.GET
@@ -12,5 +12,5 @@ interface ApiFilme {
     }
 
     @GET(FILME_POPULAR)
-    fun getData(): Call<FilmeResult>
+    suspend fun getData(): FilmeResult
 }

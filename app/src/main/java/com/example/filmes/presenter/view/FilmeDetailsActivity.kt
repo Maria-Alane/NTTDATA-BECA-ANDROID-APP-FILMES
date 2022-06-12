@@ -1,11 +1,11 @@
-package com.example.filmes.view
+package com.example.filmes.presenter.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.filmes.databinding.ActivityFilmeDetailsBinding
-import com.example.filmes.model.Filme
-import com.example.filmes.viewmodel.FilmeDetailsViewModel
+import com.example.filmes.data.model.FilmeResponse
+import com.example.filmes.presenter.viewmodel.FilmeDetailsViewModel
 
 class FilmeDetailsActivity : AppCompatActivity() {
 
@@ -24,7 +24,7 @@ class FilmeDetailsActivity : AppCompatActivity() {
         setFilme(viewModel.filmesDetailsLiveData.value)
     }
 
-    private fun setFilme(filmeSelected: Filme?) {
+    private fun setFilme(filmeSelected: FilmeResponse?) {
         filmeSelected?.let { filme ->
             binding.textViewTituloDetails.text = filme.title
             binding.textViewDescricao.text = filme.overview

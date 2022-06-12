@@ -16,6 +16,7 @@
 
         <ImageView
             android:id="@+id/imagem_view_filme"
+            android:contentDescription="@string/poster_do_filme"
             android:layout_width="400dp"
             android:layout_height="200dp"
             android:scaleType="centerCrop"

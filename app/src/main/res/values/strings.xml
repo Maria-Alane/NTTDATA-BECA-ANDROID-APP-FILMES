@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NTTDATA-APP-FILMES</string>
+    <string name="poster_do_filme">Poster do filme</string>
 </resources>

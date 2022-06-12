@@ -1,4 +1,4 @@
-package com.example.filmes
+package com.example.filmes.presenter.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.filmes.data.model.FilmeResponse
 import com.example.filmes.databinding.FilmeListItemBinding
-import com.example.filmes.model.Filme
 
-class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DIFF_CALLBACK) {
+class FilmeItemAdapter : ListAdapter<FilmeResponse, FilmeItemAdapter.FilmeViewHolder>(DIFF_CALLBACK) {
 
-    var onClickListener: ((filme: Filme) -> Unit)? = null
+    var onClickListener: ((filme: FilmeResponse) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmeViewHolder {
         val binding =
@@ -25,10 +25,10 @@ class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DI
 
     class FilmeViewHolder(
         private val binding: FilmeListItemBinding,
-        private val onClickListener: ((filme: Filme) -> Unit)?
+        private val onClickListener: ((filme: FilmeResponse) -> Unit)?
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(filme: Filme) {
+        fun bind(filme: FilmeResponse) {
             binding.textViewTitulo.text = filme.title
             binding.textViewVote.text = filme.voteAverage.toString()
 
@@ -45,12 +45,12 @@ class FilmeItemAdapter : ListAdapter<Filme, FilmeItemAdapter.FilmeViewHolder>(DI
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Filme>() {
-            override fun areItemsTheSame(oldItem: Filme, newItem: Filme): Boolean {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FilmeResponse>() {
+            override fun areItemsTheSame(oldItem: FilmeResponse, newItem: FilmeResponse): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: Filme, newItem: Filme): Boolean {
+            override fun areContentsTheSame(oldItem: FilmeResponse, newItem: FilmeResponse): Boolean {
                 return oldItem == newItem
             }
         }
