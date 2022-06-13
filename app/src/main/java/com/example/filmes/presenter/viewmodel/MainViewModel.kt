@@ -1,47 +1,22 @@
 package com.example.filmes.presenter.viewmodel
 
-import androidx.lifecycle.*
-import com.example.filmes.data.api.FilmeResult
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.liveData
 import com.example.filmes.data.repository.IFilmesRepository
-import kotlinx.coroutines.launch
+import com.example.filmes.utils.Resource
+import kotlinx.coroutines.Dispatchers
 
 class MainViewModel(val repository: IFilmesRepository) : ViewModel() {
 
-    private val _filmesLiveData = MutableLiveData<FilmeResult>()
-    val filmesLiveData: LiveData<FilmeResult> = _filmesLiveData
-
-    fun getFilmes() {
-        viewModelScope.launch {
-            val filmeList = repository.getData()
-            _filmesLiveData.value = filmeList
+    fun getFilmes() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = repository.getData()))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
     }
-
-//    fun getFilmes() = liveData(Dispatchers.IO) {
-//        emit(Resource.loading(data = null))
-//        try {
-//            emit(Resource.success(data = repository.getData()))
-//        } catch (exception: Exception) {
-//            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
-//        }
-//    }
-
-//
-//    fun getFilmes() {
-//        val apiFilme = RetrofitFilme.API_FILME
-//        apiFilme.getData().enqueue(object : Callback<FilmeResult> {
-//            override fun onResponse(call: Call<FilmeResult>, response: Response<FilmeResult>) {
-//                if (response.isSuccessful) {
-//                    _filmesLiveData.value = response.body()
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<FilmeResult>, t: Throwable) {
-//                Toast.makeText(context, "Erro ao carregar filmes!", Toast.LENGTH_LONG)
-//                    .show()
-//            }
-//        })
-//    }
 
     class ViewModelFactory(private val repository: IFilmesRepository) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
